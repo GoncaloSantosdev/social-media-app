@@ -1,9 +1,7 @@
-import { UserButton } from "@clerk/nextjs";
-
 const HomeScreen = () => {
   return (
     <div>
-      <UserButton afterSignOutUrl="/" />
+      <h1 className="head-text text-left">Home</h1>
     </div>
   );
 };
