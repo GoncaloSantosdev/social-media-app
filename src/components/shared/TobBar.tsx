@@ -1,15 +1,13 @@
+import { OrganizationSwitcher, SignedIn, SignOutButton } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 import Image from "next/image";
 import Link from "next/link";
-// Clerk
-import { OrganizationSwitcher, SignOutButton, SignedIn } from "@clerk/nextjs";
-// Styles
-import { dark } from "@clerk/themes";
 
-const TobBar = () => {
+function Topbar() {
   return (
     <nav className="topbar">
-      <Link href={"/"} className="flex items-center gap-4">
-        <Image src={"/assets/logo.svg"} alt="logo" width={28} height={28} />
+      <Link href="/" className="flex items-center gap-4">
+        <Image src="/assets/logo.svg" alt="logo" width={28} height={28} />
         <p className="text-heading3-bold text-light-1 max-xs:hidden">
           Social Media App
         </p>
@@ -21,7 +19,7 @@ const TobBar = () => {
             <SignOutButton>
               <div className="flex cursor-pointer">
                 <Image
-                  src={"/assets/logout.svg"}
+                  src="/assets/logout.svg"
                   alt="logout"
                   width={24}
                   height={24}
@@ -30,6 +28,7 @@ const TobBar = () => {
             </SignOutButton>
           </SignedIn>
         </div>
+
         <OrganizationSwitcher
           appearance={{
             baseTheme: dark,
@@ -41,6 +40,6 @@ const TobBar = () => {
       </div>
     </nav>
   );
-};
+}
 
-export default TobBar;
+export default Topbar;

@@ -1,16 +1,21 @@
+import React from "react";
+import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-// Auth
 import { ClerkProvider } from "@clerk/nextjs";
-// Components
-import { BottomBar, LeftSideBar, RightSideBar, TopBar } from "@/components";
-// Styles
+import { dark } from "@clerk/themes";
+
+import Topbar from "@/components/shared/TobBar";
+import LeftSidebar from "@/components/shared/LeftSideBar";
+import RightSidebar from "@/components/shared/RightSideBar";
+import Bottombar from "@/components/shared/BottomBar";
+
 import "../globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata = {
-  title: "Social Media App",
-  description: "Next.js 13 social media app",
+export const metadata: Metadata = {
+  title: "Threads",
+  description: "A Next.js 13 Meta Threads application",
 };
 
 export default function RootLayout({
@@ -19,18 +24,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <ClerkProvider>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+    >
       <html lang="en">
         <body className={inter.className}>
-          <TopBar />
+          <Topbar />
+
           <main className="flex flex-row">
-            <LeftSideBar />
+            <LeftSidebar />
             <section className="main-container">
               <div className="w-full max-w-4xl">{children}</div>
             </section>
-            <RightSideBar />
+            <RightSidebar />
           </main>
-          <BottomBar />
+
+          <Bottombar />
         </body>
       </html>
     </ClerkProvider>
